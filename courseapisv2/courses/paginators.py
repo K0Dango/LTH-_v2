@@ -1,4 +1,5 @@
 from rest_framework import pagination
 
-class CoursePaginatior(pagination.PageNumberPagination):
-    page_size = 2
+
+class CoursePagination(pagination.PageNumberPagination):
+    page_size = 3

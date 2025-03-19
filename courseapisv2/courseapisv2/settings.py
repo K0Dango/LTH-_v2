@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'drf_yasg',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('oauth2_provider.contrib.rest_framework.OAuth2Authentication',)
+}
+
+
+OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+
 
 ROOT_URLCONF = 'courseapisv2.urls'
 
@@ -139,3 +148,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import cloudinary
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+
+# Configuration
+cloudinary.config(
+    cloud_name="da6hbd0o7",
+    api_key="981679221813865",
+    api_secret="eFbqe5Rs60p-p2nIzDxfZIImBqA",
+    secure=True
+)
+
+CLIENT_ID = 'xDV6Ji92TMK2fI6KgZBmsMbpdigXf8Lx8fB0qkit'
+CLIENT_SECRET = 'uP4tMUPS53ByUq1rElm8325xrORWRySHb6nKmeMbSynjeZRT0N00rIhcRjIpJuU8CGr2OP75vOyui7tjJS5U2hKC9MnHOct5uMxGK9x1xt3qUb7wKUVecZbPk6YhVmMZ'
